@@ -23,14 +23,14 @@ public class TestBase {
     }
 
     @BeforeMethod
-    public void logMethodStart(Method m){
-        logger.info("start method "+ m.getName());
+    public void logMethodStart(Method m) {
+        logger.info("start method " + m.getName());
 
     }
 
     @AfterMethod(alwaysRun = true)
-    public void logMethodStop(ITestResult result){
-        if(result.isSuccess()){
+    public void logMethodStop(ITestResult result) {
+        if (result.isSuccess()) {
             logger.info("PASSED: Test method " + result.getMethod().getMethodName());
         } else logger.error("FAILED: Test method" + result.getMethod().getMethodName());
 

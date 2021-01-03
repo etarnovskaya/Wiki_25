@@ -16,6 +16,7 @@ public class ApplicationManager {
     DesiredCapabilities capabilities;
 
     ArticleHelper articleHelper;
+    NavigationHelper navigation;
 
     Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
 
@@ -34,18 +35,23 @@ public class ApplicationManager {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         articleHelper = new ArticleHelper(driver);
+        navigation = new NavigationHelper(driver);
 
     }
 
-    public void stop(){
-            driver.quit();
+    public void stop() {
+        driver.quit();
     }
 
-    public String getAppVersion(){
+    public String getAppVersion() {
         return driver.findElement(By.id("app_version_res")).getText();
     }
 
     public ArticleHelper article() {
         return articleHelper;
+    }
+
+    public NavigationHelper navigateTo() {
+        return navigation;
     }
 }
